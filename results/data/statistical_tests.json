@@ -1,0 +1,63 @@
+{
+  "ca_vs_random_return": {
+    "test": "paired_t_test",
+    "metric": "cumulative_return",
+    "t_statistic": 0.00308087490998327,
+    "p_value": 0.9976090301728194,
+    "significant": "False",
+    "ca_mean": 0.06122038973900088,
+    "random_mean": 0.06112084774485256,
+    "difference_mean": 9.95419941483222e-05,
+    "n_observations": 10
+  },
+  "ca_vs_buyhold_return": {
+    "test": "paired_t_test",
+    "metric": "cumulative_return",
+    "t_statistic": -1.9047720480443244,
+    "p_value": 0.08920467834886024,
+    "significant": "False",
+    "ca_mean": 0.06122038973900088,
+    "buyhold_mean": 0.14641356374210523,
+    "difference_mean": -0.08519317400310435,
+    "n_observations": 10
+  },
+  "ca_vs_random_sharpe": {
+    "test": "paired_t_test",
+    "metric": "sharpe_ratio",
+    "t_statistic": 0.476120426404526,
+    "p_value": 0.6453340781593463,
+    "significant": "False",
+    "ca_mean": 0.5055228216985516,
+    "random_mean": 0.124548094367288,
+    "difference_mean": 0.3809747273312635,
+    "n_observations": 10
+  },
+  "ca_vs_buyhold_sharpe": {
+    "test": "paired_t_test",
+    "metric": "sharpe_ratio",
+    "t_statistic": -1.9106801916644223,
+    "p_value": 0.08836535353019802,
+    "significant": "False",
+    "ca_mean": 0.5055228216985516,
+    "buyhold_mean": 1.6718242878827418,
+    "difference_mean": -1.1663014661841908,
+    "n_observations": 10
+  },
+  "ca_vs_avg_random_return": {
+    "test": "paired_t_test",
+    "metric": "cumulative_return",
+    "comparison": "CA vs. mean of 100 random selections",
+    "t_statistic": 0.04111759084831758,
+    "p_value": 0.9680998659514535,
+    "significant": "False",
+    "ca_mean": 0.06122038973900088,
+    "avg_random_mean": 0.059759142251388356,
+    "difference_mean": 0.0014612474876125286,
+    "n_observations": 10
+  },
+  "effect_size_ca_vs_random": {
+    "metric": "cumulative_return",
+    "cohens_d": 0.0010269583033277567,
+    "interpretation": "negligible"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "ticker": "JPM",
+  "phase": "test",
+  "timestamp": "2026-03-07T15:03:32.708627",
+  "num_strategies": 3,
+  "results": [
+    {
+      "ticker": "JPM",
+      "strategy_name": "Banker Pullback Rebound",
+      "strategy_type": "rsi_mean_reversion",
+      "cumulative_return": 0.02822999672485782,
+      "annualized_return": 0.11584901912624468,
+      "sharpe_ratio": 0.9399875324478607,
+      "max_drawdown": -0.0338020054578276,
+      "win_rate": 0.5,
+      "calmar_ratio": 3.427282421771732,
+      "total_trades": 2,
+      "avg_trade_return": 0.014653267803628134,
+      "avg_holding_days": 8.0,
+      "profit_factor": 2.326547797600779,
+      "volatility": 0.10273796852371467,
+      "sortino_ratio": 0.7032535394213449,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.005495786666870117,
+      "trades": [
+        {
+          "entry_date": "2025-10-08",
+          "exit_date": "2025-10-17",
+          "entry_price": 304.0299987792969,
+          "exit_price": 297.55999755859375,
+          "return_pct": -0.0212807987589404,
+          "pnl_dollars": -2128.079875894051,
+          "holding_days": 9,
+          "exit_reason": "signal",
+          "position_value": 97871.92012410595
+        },
+        {
+          "entry_date": "2025-10-23",
+          "exit_date": "2025-10-30",
+          "entry_price": 294.5400085449219,
+          "exit_price": 309.44000244140625,
+          "return_pct": 0.05058733436619667,
+          "pnl_dollars": 4951.079548379843,
+          "holding_days": 7,
+          "exit_reason": "end_of_data",
+          "position_value": 102822.99967248579
+        }
+      ]
+    },
+    {
+      "ticker": "JPM",
+      "strategy_name": "Upper Band Expansion Surge",
+      "strategy_type": "bollinger_breakout",
+      "cumulative_return": -0.022220753574439867,
+      "annualized_return": -0.0846794577854868,
+      "sharpe_ratio": -1.538829631147165,
+      "max_drawdown": -0.03107103618535719,
+      "win_rate": 0.0,
+      "calmar_ratio": -2.725350299884546,
+      "total_trades": 1,
+      "avg_trade_return": -0.022220753574439756,
+      "avg_holding_days": 8.0,
+      "profit_factor": 0.0,
+      "volatility": 0.06981575005017181,
+      "sortino_ratio": -0.41502024438173873,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.005009889602661133,
+      "trades": [
+        {
+          "entry_date": "2025-08-28",
+          "exit_date": "2025-09-05",
+          "entry_price": 301.07000732421875,
+          "exit_price": 294.3800048828125,
+          "return_pct": -0.022220753574439756,
+          "pnl_dollars": -2222.0753574439877,
+          "holding_days": 8,
+          "exit_reason": "signal",
+          "position_value": 97777.92464255601
+        }
+      ]
+    },
+    {
+      "ticker": "JPM",
+      "strategy_name": "Buy and Hold",
+      "strategy_type": "buy_and_hold",
+      "cumulative_return": 0.06935759637446481,
+      "annualized_return": 0.30218188823654146,
+      "sharpe_ratio": 1.4951389317708594,
+      "max_drawdown": -0.069448877987041,
+      "win_rate": 1.0,
+      "calmar_ratio": 4.351141400627493,
+      "total_trades": 1,
+      "avg_trade_return": 0.06935759637446481,
+      "avg_holding_days": 90.0,
+      "profit_factor": Infinity,
+      "volatility": 0.17638444918465823,
+      "sortino_ratio": 2.1477384308566014,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0,
+      "trades": [
+        {
+          "entry_date": "2025-08-01",
+          "exit_date": "2025-10-30",
+          "entry_price": 289.3699951171875,
+          "exit_price": 309.44000244140625,
+          "return_pct": 0.06935759637446481,
+          "pnl_dollars": 6935.759637446492,
+          "holding_days": 90,
+          "exit_reason": "end_of_data",
+          "position_value": 106935.75963744649
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,13 @@
-# Consequence-Aware Agentic Solutions: LLM-based Trading Strategy Selection with Pre-execution Outcome Assessment
+<p align="center">
+  <img src="summary.png" alt="CA2I Framework — Consequence-Aware Agentic AI" width="100%">
+</p>
 
-**Author:** Prof. Shahab Anbarjafari, 3S Holding OÜ, Tartu, Estonia  
+# Consequence-Aware Agentic AI: A Pre-Execution Outcome Assessment Framework for Responsible Large Language Model Agents
+
+**Authors:** A. A. Jafari, C. Ozcinar, G. Anbarjafari  
+**Affiliation:** University of Tartu & 3S Holding OÜ, Tartu, Estonia  
 **Contact:** shb@3sholding.com  
+**Paper:** [arXiv:submit/7339239](https://arxiv.org/submit/7339239/view) — *Submitted to IEEE Transactions on Artificial Intelligence*  
 **License:** Research use
 
 ---

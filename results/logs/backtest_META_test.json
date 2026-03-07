@@ -1,0 +1,132 @@
+{
+  "ticker": "META",
+  "phase": "test",
+  "timestamp": "2026-03-07T15:02:54.161541",
+  "num_strategies": 3,
+  "results": [
+    {
+      "ticker": "META",
+      "strategy_name": "Trend Engine 21/100",
+      "strategy_type": "ma_crossover",
+      "cumulative_return": -0.06365217956164426,
+      "annualized_return": -0.22814807721287989,
+      "sharpe_ratio": -1.2683743600522603,
+      "max_drawdown": -0.11357741758704037,
+      "win_rate": 0.5,
+      "calmar_ratio": -2.008745066227958,
+      "total_trades": 2,
+      "avg_trade_return": -0.030848326465861498,
+      "avg_holding_days": 37.0,
+      "profit_factor": 0.2490860937736214,
+      "volatility": 0.20649057576183572,
+      "sortino_ratio": -1.8548112513549853,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0015578269958496094,
+      "trades": [
+        {
+          "entry_date": "2025-08-04",
+          "exit_date": "2025-10-03",
+          "entry_price": 776.3699951171875,
+          "exit_price": 710.5599975585938,
+          "return_pct": -0.08476628150558574,
+          "pnl_dollars": -8476.628150558565,
+          "holding_days": 60,
+          "exit_reason": "stop_loss",
+          "position_value": 91523.37184944142
+        },
+        {
+          "entry_date": "2025-10-06",
+          "exit_date": "2025-10-20",
+          "entry_price": 715.6599731445312,
+          "exit_price": 732.1699829101562,
+          "return_pct": 0.023069628573862744,
+          "pnl_dollars": 2111.4101943941496,
+          "holding_days": 14,
+          "exit_reason": "signal",
+          "position_value": 93634.78204383557
+        }
+      ]
+    },
+    {
+      "ticker": "META",
+      "strategy_name": "Trend Engine 21/100",
+      "strategy_type": "ma_crossover",
+      "cumulative_return": -0.06365217956164426,
+      "annualized_return": -0.22814807721287989,
+      "sharpe_ratio": -1.2683743600522603,
+      "max_drawdown": -0.11357741758704037,
+      "win_rate": 0.5,
+      "calmar_ratio": -2.008745066227958,
+      "total_trades": 2,
+      "avg_trade_return": -0.030848326465861498,
+      "avg_holding_days": 37.0,
+      "profit_factor": 0.2490860937736214,
+      "volatility": 0.20649057576183572,
+      "sortino_ratio": -1.8548112513549853,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0013039112091064453,
+      "trades": [
+        {
+          "entry_date": "2025-08-04",
+          "exit_date": "2025-10-03",
+          "entry_price": 776.3699951171875,
+          "exit_price": 710.5599975585938,
+          "return_pct": -0.08476628150558574,
+          "pnl_dollars": -8476.628150558565,
+          "holding_days": 60,
+          "exit_reason": "stop_loss",
+          "position_value": 91523.37184944142
+        },
+        {
+          "entry_date": "2025-10-06",
+          "exit_date": "2025-10-20",
+          "entry_price": 715.6599731445312,
+          "exit_price": 732.1699829101562,
+          "return_pct": 0.023069628573862744,
+          "pnl_dollars": 2111.4101943941496,
+          "holding_days": 14,
+          "exit_reason": "signal",
+          "position_value": 93634.78204383557
+        }
+      ]
+    },
+    {
+      "ticker": "META",
+      "strategy_name": "Buy and Hold",
+      "strategy_type": "buy_and_hold",
+      "cumulative_return": -0.11138523216324259,
+      "annualized_return": -0.3718555736972422,
+      "sharpe_ratio": -1.3856956517138384,
+      "max_drawdown": -0.1563671256922468,
+      "win_rate": 0.0,
+      "calmar_ratio": -2.378093042581776,
+      "total_trades": 1,
+      "avg_trade_return": -0.11138523216324259,
+      "avg_holding_days": 90.0,
+      "profit_factor": 0.0,
+      "volatility": 0.3176916443429339,
+      "sortino_ratio": -1.3531581780478168,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0,
+      "trades": [
+        {
+          "entry_date": "2025-08-01",
+          "exit_date": "2025-10-30",
+          "entry_price": 750.010009765625,
+          "exit_price": 666.469970703125,
+          "return_pct": -0.11138523216324259,
+          "pnl_dollars": -11138.523216324262,
+          "holding_days": 90,
+          "exit_reason": "end_of_data",
+          "position_value": 88861.47678367574
+        }
+      ]
+    }
+  ]
+}

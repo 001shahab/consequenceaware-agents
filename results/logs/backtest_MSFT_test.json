@@ -1,0 +1,121 @@
+{
+  "ticker": "MSFT",
+  "phase": "test",
+  "timestamp": "2026-03-07T15:01:36.853896",
+  "num_strategies": 3,
+  "results": [
+    {
+      "ticker": "MSFT",
+      "strategy_name": "Overheat Pullback Reclaimer",
+      "strategy_type": "rsi_mean_reversion",
+      "cumulative_return": -0.0062341982236300275,
+      "annualized_return": -0.024323293640873267,
+      "sharpe_ratio": -0.6784976880361778,
+      "max_drawdown": -0.025707287071946663,
+      "win_rate": 0.5,
+      "calmar_ratio": -0.946163380554314,
+      "total_trades": 2,
+      "avg_trade_return": -0.003109295819636815,
+      "avg_holding_days": 9.0,
+      "profit_factor": 0.23527957764546745,
+      "volatility": 0.06339743505524588,
+      "sortino_ratio": -0.28905178682264127,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.005204200744628906,
+      "trades": [
+        {
+          "entry_date": "2025-08-20",
+          "exit_date": "2025-08-29",
+          "entry_price": 505.7200012207031,
+          "exit_price": 506.69000244140625,
+          "return_pct": 0.0019180598322425801,
+          "pnl_dollars": 191.80598322425794,
+          "holding_days": 9,
+          "exit_reason": "signal",
+          "position_value": 100191.80598322426
+        },
+        {
+          "entry_date": "2025-09-02",
+          "exit_date": "2025-09-11",
+          "entry_price": 505.1199951171875,
+          "exit_price": 501.010009765625,
+          "return_pct": -0.00813665147151621,
+          "pnl_dollars": -815.2258055872662,
+          "holding_days": 9,
+          "exit_reason": "signal",
+          "position_value": 99376.58017763699
+        }
+      ]
+    },
+    {
+      "ticker": "MSFT",
+      "strategy_name": "30-Day Surge with Trailing Defense",
+      "strategy_type": "momentum",
+      "cumulative_return": -0.05862150615217132,
+      "annualized_return": -0.21169038657238393,
+      "sharpe_ratio": -3.9366351872143457,
+      "max_drawdown": -0.05862150615217135,
+      "win_rate": 0.0,
+      "calmar_ratio": -3.611138649745233,
+      "total_trades": 1,
+      "avg_trade_return": -0.05862150615217132,
+      "avg_holding_days": 17.0,
+      "profit_factor": 0.0,
+      "volatility": 0.06588826461392633,
+      "sortino_ratio": -3.0428488205298865,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.004244089126586914,
+      "trades": [
+        {
+          "entry_date": "2025-08-04",
+          "exit_date": "2025-08-21",
+          "entry_price": 535.6400146484375,
+          "exit_price": 504.239990234375,
+          "return_pct": -0.05862150615217132,
+          "pnl_dollars": -5862.150615217135,
+          "holding_days": 17,
+          "exit_reason": "signal",
+          "position_value": 94137.84938478286
+        }
+      ]
+    },
+    {
+      "ticker": "MSFT",
+      "strategy_name": "Buy and Hold",
+      "strategy_type": "buy_and_hold",
+      "cumulative_return": 0.0031482407513294675,
+      "annualized_return": 0.012453634343224662,
+      "sharpe_ratio": 0.035972403400787896,
+      "max_drawdown": -0.07587187950308613,
+      "win_rate": 1.0,
+      "calmar_ratio": 0.16414031687086522,
+      "total_trades": 1,
+      "avg_trade_return": 0.0031482407513294675,
+      "avg_holding_days": 90.0,
+      "profit_factor": Infinity,
+      "volatility": 0.164521134763241,
+      "sortino_ratio": 0.05103093226331648,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0,
+      "trades": [
+        {
+          "entry_date": "2025-08-01",
+          "exit_date": "2025-10-30",
+          "entry_price": 524.1099853515625,
+          "exit_price": 525.760009765625,
+          "return_pct": 0.0031482407513294675,
+          "pnl_dollars": 314.8240751329431,
+          "holding_days": 90,
+          "exit_reason": "end_of_data",
+          "position_value": 100314.82407513294
+        }
+      ]
+    }
+  ]
+}

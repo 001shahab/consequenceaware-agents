@@ -1,0 +1,132 @@
+{
+  "ticker": "AAPL",
+  "phase": "test",
+  "timestamp": "2026-03-07T15:01:15.959864",
+  "num_strategies": 3,
+  "results": [
+    {
+      "ticker": "AAPL",
+      "strategy_name": "Volatility Expansion Breakout",
+      "strategy_type": "bollinger_breakout",
+      "cumulative_return": -0.05290415263144155,
+      "annualized_return": -0.1926699667116636,
+      "sharpe_ratio": -1.4160514280544578,
+      "max_drawdown": -0.0941010948351538,
+      "win_rate": 0.0,
+      "calmar_ratio": -2.0474784809802973,
+      "total_trades": 2,
+      "avg_trade_return": -0.026687669505630063,
+      "avg_holding_days": 25.5,
+      "profit_factor": 0.0,
+      "volatility": 0.15881538902743467,
+      "sortino_ratio": -1.5091339606471585,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.005565166473388672,
+      "trades": [
+        {
+          "entry_date": "2025-08-08",
+          "exit_date": "2025-09-10",
+          "entry_price": 229.35000610351562,
+          "exit_price": 226.7899932861328,
+          "return_pct": -0.01116203509594571,
+          "pnl_dollars": -1116.2035095945757,
+          "holding_days": 33,
+          "exit_reason": "signal",
+          "position_value": 98883.79649040542
+        },
+        {
+          "entry_date": "2025-09-22",
+          "exit_date": "2025-10-10",
+          "entry_price": 256.0799865722656,
+          "exit_price": 245.27000427246094,
+          "return_pct": -0.042213303915314415,
+          "pnl_dollars": -4174.211753549578,
+          "holding_days": 18,
+          "exit_reason": "signal",
+          "position_value": 94709.58473685585
+        }
+      ]
+    },
+    {
+      "ticker": "AAPL",
+      "strategy_name": "RSI Snapback Accumulator",
+      "strategy_type": "rsi_mean_reversion",
+      "cumulative_return": 0.20833092476851367,
+      "annualized_return": 1.106720609566528,
+      "sharpe_ratio": 4.473632849037486,
+      "max_drawdown": -0.007580008893106835,
+      "win_rate": 1.0,
+      "calmar_ratio": 146.00518616448667,
+      "total_trades": 2,
+      "avg_trade_return": 0.09960412292665699,
+      "avg_holding_days": 7.5,
+      "profit_factor": Infinity,
+      "volatility": 0.16801376726797446,
+      "sortino_ratio": 12.25177025892754,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.006528139114379883,
+      "trades": [
+        {
+          "entry_date": "2025-08-04",
+          "exit_date": "2025-08-08",
+          "entry_price": 203.35000610351562,
+          "exit_price": 229.35000610351562,
+          "return_pct": 0.12785836842692122,
+          "pnl_dollars": 12785.836842692137,
+          "holding_days": 4,
+          "exit_reason": "signal",
+          "position_value": 112785.83684269214
+        },
+        {
+          "entry_date": "2025-10-10",
+          "exit_date": "2025-10-21",
+          "entry_price": 245.27000427246094,
+          "exit_price": 262.7699890136719,
+          "return_pct": 0.07134987742639276,
+          "pnl_dollars": 8047.255634159228,
+          "holding_days": 11,
+          "exit_reason": "signal",
+          "position_value": 120833.09247685137
+        }
+      ]
+    },
+    {
+      "ticker": "AAPL",
+      "strategy_name": "Buy and Hold",
+      "strategy_type": "buy_and_hold",
+      "cumulative_return": 0.34104154238773576,
+      "annualized_return": 2.175439088990113,
+      "sharpe_ratio": 4.532874582929956,
+      "max_drawdown": -0.05417468329007947,
+      "win_rate": 1.0,
+      "calmar_ratio": 40.15600935480654,
+      "total_trades": 1,
+      "avg_trade_return": 0.34104154238773576,
+      "avg_holding_days": 90.0,
+      "profit_factor": Infinity,
+      "volatility": 0.2625424479103095,
+      "sortino_ratio": 8.439611322380511,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0,
+      "trades": [
+        {
+          "entry_date": "2025-08-01",
+          "exit_date": "2025-10-30",
+          "entry_price": 202.3800048828125,
+          "exit_price": 271.3999938964844,
+          "return_pct": 0.34104154238773576,
+          "pnl_dollars": 34104.15423877357,
+          "holding_days": 90,
+          "exit_reason": "end_of_data",
+          "position_value": 134104.15423877357
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "ticker": "TSLA",
+  "phase": "test",
+  "timestamp": "2026-03-07T15:01:55.871829",
+  "num_strategies": 3,
+  "results": [
+    {
+      "ticker": "TSLA",
+      "strategy_name": "Acceleration Pulse MACD",
+      "strategy_type": "macd_signal",
+      "cumulative_return": 0.1788162166061651,
+      "annualized_return": 0.9112567196820582,
+      "sharpe_ratio": 2.1090924371666646,
+      "max_drawdown": -0.10175133705909643,
+      "win_rate": 0.3333333333333333,
+      "calmar_ratio": 8.9557223130425,
+      "total_trades": 3,
+      "avg_trade_return": 0.0623733982684412,
+      "avg_holding_days": 17.666666666666668,
+      "profit_factor": 5.72868551765259,
+      "volatility": 0.3276884011994287,
+      "sortino_ratio": 3.3062636528201876,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.004952192306518555,
+      "trades": [
+        {
+          "entry_date": "2025-08-07",
+          "exit_date": "2025-08-21",
+          "entry_price": 322.2699890136719,
+          "exit_price": 320.1099853515625,
+          "return_pct": -0.006702466055620637,
+          "pnl_dollars": -670.2466055620607,
+          "holding_days": 14,
+          "exit_reason": "signal",
+          "position_value": 99329.75339443794
+        },
+        {
+          "entry_date": "2025-08-22",
+          "exit_date": "2025-09-02",
+          "entry_price": 340.010009765625,
+          "exit_price": 329.3599853515625,
+          "return_pct": -0.03132267906290098,
+          "pnl_dollars": -3111.2739869710786,
+          "holding_days": 11,
+          "exit_reason": "signal",
+          "position_value": 96218.47940746688
+        },
+        {
+          "entry_date": "2025-09-05",
+          "exit_date": "2025-10-03",
+          "entry_price": 350.8399963378906,
+          "exit_price": 429.8299865722656,
+          "return_pct": 0.22514533992384522,
+          "pnl_dollars": 21663.142253149636,
+          "holding_days": 28,
+          "exit_reason": "signal",
+          "position_value": 117881.62166061651
+        }
+      ]
+    },
+    {
+      "ticker": "TSLA",
+      "strategy_name": "Acceleration Pulse MACD",
+      "strategy_type": "macd_signal",
+      "cumulative_return": 0.1788162166061651,
+      "annualized_return": 0.9112567196820582,
+      "sharpe_ratio": 2.1090924371666646,
+      "max_drawdown": -0.10175133705909643,
+      "win_rate": 0.3333333333333333,
+      "calmar_ratio": 8.9557223130425,
+      "total_trades": 3,
+      "avg_trade_return": 0.0623733982684412,
+      "avg_holding_days": 17.666666666666668,
+      "profit_factor": 5.72868551765259,
+      "volatility": 0.3276884011994287,
+      "sortino_ratio": 3.3062636528201876,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.004549980163574219,
+      "trades": [
+        {
+          "entry_date": "2025-08-07",
+          "exit_date": "2025-08-21",
+          "entry_price": 322.2699890136719,
+          "exit_price": 320.1099853515625,
+          "return_pct": -0.006702466055620637,
+          "pnl_dollars": -670.2466055620607,
+          "holding_days": 14,
+          "exit_reason": "signal",
+          "position_value": 99329.75339443794
+        },
+        {
+          "entry_date": "2025-08-22",
+          "exit_date": "2025-09-02",
+          "entry_price": 340.010009765625,
+          "exit_price": 329.3599853515625,
+          "return_pct": -0.03132267906290098,
+          "pnl_dollars": -3111.2739869710786,
+          "holding_days": 11,
+          "exit_reason": "signal",
+          "position_value": 96218.47940746688
+        },
+        {
+          "entry_date": "2025-09-05",
+          "exit_date": "2025-10-03",
+          "entry_price": 350.8399963378906,
+          "exit_price": 429.8299865722656,
+          "return_pct": 0.22514533992384522,
+          "pnl_dollars": 21663.142253149636,
+          "holding_days": 28,
+          "exit_reason": "signal",
+          "position_value": 117881.62166061651
+        }
+      ]
+    },
+    {
+      "ticker": "TSLA",
+      "strategy_name": "Buy and Hold",
+      "strategy_type": "buy_and_hold",
+      "cumulative_return": 0.4542510623622258,
+      "annualized_return": 3.369106157978388,
+      "sharpe_ratio": 3.5012779924224264,
+      "max_drawdown": -0.10005223975023235,
+      "win_rate": 1.0,
+      "calmar_ratio": 33.67347064282551,
+      "total_trades": 1,
+      "avg_trade_return": 0.4542510623622258,
+      "avg_holding_days": 90.0,
+      "profit_factor": Infinity,
+      "volatility": 0.4519127142249141,
+      "sortino_ratio": 6.538114686943238,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0,
+      "trades": [
+        {
+          "entry_date": "2025-08-01",
+          "exit_date": "2025-10-30",
+          "entry_price": 302.6300048828125,
+          "exit_price": 440.1000061035156,
+          "return_pct": 0.4542510623622258,
+          "pnl_dollars": 45425.10623622258,
+          "holding_days": 90,
+          "exit_reason": "end_of_data",
+          "position_value": 145425.10623622258
+        }
+      ]
+    }
+  ]
+}

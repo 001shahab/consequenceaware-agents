@@ -1,0 +1,132 @@
+{
+  "ticker": "BRK-B",
+  "phase": "test",
+  "timestamp": "2026-03-07T15:03:54.839013",
+  "num_strategies": 3,
+  "results": [
+    {
+      "ticker": "BRK-B",
+      "strategy_name": "Capital Compound MACD Turn",
+      "strategy_type": "macd_signal",
+      "cumulative_return": 0.001614484009703876,
+      "annualized_return": 0.006372120769840839,
+      "sharpe_ratio": -0.14983404073621795,
+      "max_drawdown": -0.05687281082738755,
+      "win_rate": 0.3333333333333333,
+      "calmar_ratio": 0.11204160084826147,
+      "total_trades": 3,
+      "avg_trade_return": 0.0007064620952762501,
+      "avg_holding_days": 10.666666666666666,
+      "profit_factor": 1.0642207664804397,
+      "volatility": 0.0729494388054279,
+      "sortino_ratio": -0.17439361729801342,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.004806995391845703,
+      "trades": [
+        {
+          "entry_date": "2025-08-13",
+          "exit_date": "2025-09-10",
+          "entry_price": 477.30999755859375,
+          "exit_price": 490.0799865722656,
+          "return_pct": 0.02675407822796383,
+          "pnl_dollars": 2675.4078227963764,
+          "holding_days": 28,
+          "exit_reason": "signal",
+          "position_value": 102675.40782279638
+        },
+        {
+          "entry_date": "2025-09-30",
+          "exit_date": "2025-10-02",
+          "entry_price": 502.739990234375,
+          "exit_price": 495.9200134277344,
+          "return_pct": -0.013565614311805918,
+          "pnl_dollars": -1392.854981831435,
+          "holding_days": 2,
+          "exit_reason": "signal",
+          "position_value": 101282.55284096494
+        },
+        {
+          "entry_date": "2025-10-07",
+          "exit_date": "2025-10-09",
+          "entry_price": 502.29998779296875,
+          "exit_price": 496.739990234375,
+          "return_pct": -0.01106907763032916,
+          "pnl_dollars": -1121.104439994553,
+          "holding_days": 2,
+          "exit_reason": "signal",
+          "position_value": 100161.44840097039
+        }
+      ]
+    },
+    {
+      "ticker": "BRK-B",
+      "strategy_name": "Buffett Bounce Reversion",
+      "strategy_type": "rsi_mean_reversion",
+      "cumulative_return": -0.006065165779592152,
+      "annualized_return": -0.023669680127681336,
+      "sharpe_ratio": -1.6622978067420193,
+      "max_drawdown": -0.011797924241811562,
+      "win_rate": 0.0,
+      "calmar_ratio": -2.006258019846962,
+      "total_trades": 1,
+      "avg_trade_return": -0.006065165779592152,
+      "avg_holding_days": 2.0,
+      "profit_factor": 0.0,
+      "volatility": 0.026461500724963206,
+      "sortino_ratio": 0.0,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.00516200065612793,
+      "trades": [
+        {
+          "entry_date": "2025-10-28",
+          "exit_date": "2025-10-30",
+          "entry_price": 481.44000244140625,
+          "exit_price": 478.5199890136719,
+          "return_pct": -0.006065165779592152,
+          "pnl_dollars": -606.5165779592207,
+          "holding_days": 2,
+          "exit_reason": "end_of_data",
+          "position_value": 99393.48342204078
+        }
+      ]
+    },
+    {
+      "ticker": "BRK-B",
+      "strategy_name": "Buy and Hold",
+      "strategy_type": "buy_and_hold",
+      "cumulative_return": 0.012012504694552728,
+      "annualized_return": 0.04814024747892587,
+      "sharpe_ratio": 0.2683428953385824,
+      "max_drawdown": -0.06145073814177091,
+      "win_rate": 1.0,
+      "calmar_ratio": 0.7833957562537839,
+      "total_trades": 1,
+      "avg_trade_return": 0.012012504694552728,
+      "avg_holding_days": 90.0,
+      "profit_factor": Infinity,
+      "volatility": 0.1390974429746598,
+      "sortino_ratio": 0.37217557147524627,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0,
+      "trades": [
+        {
+          "entry_date": "2025-08-01",
+          "exit_date": "2025-10-30",
+          "entry_price": 472.8399963378906,
+          "exit_price": 478.5199890136719,
+          "return_pct": 0.012012504694552728,
+          "pnl_dollars": 1201.2504694552772,
+          "holding_days": 90,
+          "exit_reason": "end_of_data",
+          "position_value": 101201.25046945528
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "ticker": "AMZN",
+  "phase": "test",
+  "timestamp": "2026-03-07T15:02:16.493729",
+  "num_strategies": 3,
+  "results": [
+    {
+      "ticker": "AMZN",
+      "strategy_name": "E-Commerce Thrust Runner",
+      "strategy_type": "momentum",
+      "cumulative_return": -0.07545397749131433,
+      "annualized_return": -0.26575059236172616,
+      "sharpe_ratio": -2.18406599346666,
+      "max_drawdown": -0.07553944757121223,
+      "win_rate": 0.0,
+      "calmar_ratio": -3.518037275970266,
+      "total_trades": 1,
+      "avg_trade_return": -0.07545397749131433,
+      "avg_holding_days": 28.0,
+      "profit_factor": 0.0,
+      "volatility": 0.14773984871813592,
+      "sortino_ratio": -1.415712997743594,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.006541013717651367,
+      "trades": [
+        {
+          "entry_date": "2025-09-16",
+          "exit_date": "2025-10-14",
+          "entry_price": 234.0500030517578,
+          "exit_price": 216.38999938964844,
+          "return_pct": -0.07545397749131433,
+          "pnl_dollars": -7545.397749131429,
+          "holding_days": 28,
+          "exit_reason": "signal",
+          "position_value": 92454.60225086857
+        }
+      ]
+    },
+    {
+      "ticker": "AMZN",
+      "strategy_name": "E-Commerce Thrust Runner",
+      "strategy_type": "momentum",
+      "cumulative_return": -0.07545397749131433,
+      "annualized_return": -0.26575059236172616,
+      "sharpe_ratio": -2.18406599346666,
+      "max_drawdown": -0.07553944757121223,
+      "win_rate": 0.0,
+      "calmar_ratio": -3.518037275970266,
+      "total_trades": 1,
+      "avg_trade_return": -0.07545397749131433,
+      "avg_holding_days": 28.0,
+      "profit_factor": 0.0,
+      "volatility": 0.14773984871813592,
+      "sortino_ratio": -1.415712997743594,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0048220157623291016,
+      "trades": [
+        {
+          "entry_date": "2025-09-16",
+          "exit_date": "2025-10-14",
+          "entry_price": 234.0500030517578,
+          "exit_price": 216.38999938964844,
+          "return_pct": -0.07545397749131433,
+          "pnl_dollars": -7545.397749131429,
+          "holding_days": 28,
+          "exit_reason": "signal",
+          "position_value": 92454.60225086857
+        }
+      ]
+    },
+    {
+      "ticker": "AMZN",
+      "strategy_name": "Buy and Hold",
+      "strategy_type": "buy_and_hold",
+      "cumulative_return": 0.037764845682661585,
+      "annualized_return": 0.15714993367933494,
+      "sharpe_ratio": 0.6127584377627763,
+      "max_drawdown": -0.10577573718094262,
+      "win_rate": 1.0,
+      "calmar_ratio": 1.4856897986965607,
+      "total_trades": 1,
+      "avg_trade_return": 0.037764845682661585,
+      "avg_holding_days": 90.0,
+      "profit_factor": Infinity,
+      "volatility": 0.2665806187112873,
+      "sortino_ratio": 0.9140926036602486,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0,
+      "trades": [
+        {
+          "entry_date": "2025-08-01",
+          "exit_date": "2025-10-30",
+          "entry_price": 214.75,
+          "exit_price": 222.86000061035156,
+          "return_pct": 0.037764845682661585,
+          "pnl_dollars": 3776.4845682661544,
+          "holding_days": 90,
+          "exit_reason": "end_of_data",
+          "position_value": 103776.48456826615
+        }
+      ]
+    }
+  ]
+}

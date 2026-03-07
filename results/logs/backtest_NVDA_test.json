@@ -1,0 +1,121 @@
+{
+  "ticker": "NVDA",
+  "phase": "test",
+  "timestamp": "2026-03-07T15:03:14.807548",
+  "num_strategies": 3,
+  "results": [
+    {
+      "ticker": "NVDA",
+      "strategy_name": "AI Trend Rider Cross",
+      "strategy_type": "ma_crossover",
+      "cumulative_return": 0.1271666632758246,
+      "annualized_return": 0.6021504070372874,
+      "sharpe_ratio": 1.6378358146229361,
+      "max_drawdown": -0.08811967169111469,
+      "win_rate": 1.0,
+      "calmar_ratio": 6.8333255841896605,
+      "total_trades": 1,
+      "avg_trade_return": 0.1271666632758246,
+      "avg_holding_days": 87.0,
+      "profit_factor": Infinity,
+      "volatility": 0.3091644925955006,
+      "sortino_ratio": 2.306707493901237,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0016930103302001953,
+      "trades": [
+        {
+          "entry_date": "2025-08-04",
+          "exit_date": "2025-10-30",
+          "entry_price": 180.0,
+          "exit_price": 202.88999938964844,
+          "return_pct": 0.1271666632758246,
+          "pnl_dollars": 12716.666327582469,
+          "holding_days": 87,
+          "exit_reason": "end_of_data",
+          "position_value": 112716.66632758247
+        }
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "strategy_name": "Volatility Expansion Launch",
+      "strategy_type": "bollinger_breakout",
+      "cumulative_return": -0.015193984718928966,
+      "annualized_return": -0.05850427523693813,
+      "sharpe_ratio": -0.6680735493933218,
+      "max_drawdown": -0.04105702185032558,
+      "win_rate": 0.5,
+      "calmar_ratio": -1.4249517524728645,
+      "total_trades": 2,
+      "avg_trade_return": -0.0074849360626482175,
+      "avg_holding_days": 8.5,
+      "profit_factor": 0.3727254893235684,
+      "volatility": 0.11226421724784479,
+      "sortino_ratio": -0.4098484472961362,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.00648808479309082,
+      "trades": [
+        {
+          "entry_date": "2025-08-04",
+          "exit_date": "2025-08-19",
+          "entry_price": 180.0,
+          "exit_price": 175.63999938964844,
+          "return_pct": -0.024222225613064197,
+          "pnl_dollars": -2422.222561306422,
+          "holding_days": 15,
+          "exit_reason": "signal",
+          "position_value": 97577.77743869358
+        },
+        {
+          "entry_date": "2025-10-28",
+          "exit_date": "2025-10-30",
+          "entry_price": 201.02999877929688,
+          "exit_price": 202.88999938964844,
+          "return_pct": 0.009252353487767762,
+          "pnl_dollars": 902.8240894135233,
+          "holding_days": 2,
+          "exit_reason": "end_of_data",
+          "position_value": 98480.6015281071
+        }
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "strategy_name": "Buy and Hold",
+      "strategy_type": "buy_and_hold",
+      "cumulative_return": 0.16791387269152858,
+      "annualized_return": 0.8425958654139489,
+      "sharpe_ratio": 2.0565034645417315,
+      "max_drawdown": -0.08811967169111466,
+      "win_rate": 1.0,
+      "calmar_ratio": 9.561949667351179,
+      "total_trades": 1,
+      "avg_trade_return": 0.16791387269152835,
+      "avg_holding_days": 90.0,
+      "profit_factor": Infinity,
+      "volatility": 0.3165378358195585,
+      "sortino_ratio": 2.965429663765387,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0,
+      "trades": [
+        {
+          "entry_date": "2025-08-01",
+          "exit_date": "2025-10-30",
+          "entry_price": 173.72000122070312,
+          "exit_price": 202.88999938964844,
+          "return_pct": 0.16791387269152835,
+          "pnl_dollars": 16791.387269152852,
+          "holding_days": 90,
+          "exit_reason": "end_of_data",
+          "position_value": 116791.38726915285
+        }
+      ]
+    }
+  ]
+}

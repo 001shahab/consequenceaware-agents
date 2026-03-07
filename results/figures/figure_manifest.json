@@ -1,0 +1,21 @@
+{
+  "equity_curves_per_stock": [
+    "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curve_AAPL.png",
+    "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curve_MSFT.png",
+    "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curve_TSLA.png",
+    "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curve_AMZN.png",
+    "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curve_GOOGL.png",
+    "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curve_META.png",
+    "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curve_NVDA.png",
+    "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curve_JPM.png",
+    "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curve_BRK-B.png",
+    "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curve_KO.png"
+  ],
+  "equity_curves_combined": "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/equity_curves_combined.png",
+  "sharpe_distribution": "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/sharpe_distribution.png",
+  "drawdown_comparison": "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/drawdown_comparison.png",
+  "cumulative_returns": "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/cumulative_return_comparison.png",
+  "summary_dashboard": "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/summary_dashboard.png",
+  "training_heatmap": "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/training_heatmap.png",
+  "sensitivity_analysis": "/Users/shahab/Desktop/MySandBox/consequenceaware-agents/results/figures/sensitivity_analysis.png"
+}

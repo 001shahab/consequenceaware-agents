@@ -1,0 +1,132 @@
+{
+  "ticker": "GOOGL",
+  "phase": "test",
+  "timestamp": "2026-03-07T15:02:36.062116",
+  "num_strategies": 3,
+  "results": [
+    {
+      "ticker": "GOOGL",
+      "strategy_name": "Golden Glide Trend Capture",
+      "strategy_type": "ma_crossover",
+      "cumulative_return": 0.44319124628651796,
+      "annualized_return": 3.239726103706114,
+      "sharpe_ratio": 5.2516893348236815,
+      "max_drawdown": -0.071254686752134,
+      "win_rate": 1.0,
+      "calmar_ratio": 45.46684928916746,
+      "total_trades": 1,
+      "avg_trade_return": 0.44319124628651796,
+      "avg_holding_days": 87.0,
+      "profit_factor": Infinity,
+      "volatility": 0.28376712452463726,
+      "sortino_ratio": 14.669652569090726,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0017039775848388672,
+      "trades": [
+        {
+          "entry_date": "2025-08-04",
+          "exit_date": "2025-10-30",
+          "entry_price": 195.0399932861328,
+          "exit_price": 281.4800109863281,
+          "return_pct": 0.44319124628651796,
+          "pnl_dollars": 44319.124628651814,
+          "holding_days": 87,
+          "exit_reason": "end_of_data",
+          "position_value": 144319.1246286518
+        }
+      ]
+    },
+    {
+      "ticker": "GOOGL",
+      "strategy_name": "Relentless Relative Strength Run",
+      "strategy_type": "momentum",
+      "cumulative_return": 0.4434943340409079,
+      "annualized_return": 3.243233112297789,
+      "sharpe_ratio": 5.255809569761481,
+      "max_drawdown": -0.07125468675213399,
+      "win_rate": 1.0,
+      "calmar_ratio": 45.51606722487848,
+      "total_trades": 3,
+      "avg_trade_return": 0.1325302726127473,
+      "avg_holding_days": 28.333333333333332,
+      "profit_factor": Infinity,
+      "volatility": 0.28370196460752656,
+      "sortino_ratio": 14.497756921474176,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.004352092742919922,
+      "trades": [
+        {
+          "entry_date": "2025-08-04",
+          "exit_date": "2025-09-09",
+          "entry_price": 195.0399932861328,
+          "exit_price": 239.6300048828125,
+          "return_pct": 0.22861983763127003,
+          "pnl_dollars": 22861.983763127006,
+          "holding_days": 36,
+          "exit_reason": "signal",
+          "position_value": 122861.98376312699
+        },
+        {
+          "entry_date": "2025-09-10",
+          "exit_date": "2025-10-15",
+          "entry_price": 239.1699981689453,
+          "exit_price": 251.02999877929688,
+          "return_pct": 0.04958816198164562,
+          "pnl_dollars": 6092.499952232261,
+          "holding_days": 35,
+          "exit_reason": "signal",
+          "position_value": 128954.48371535924
+        },
+        {
+          "entry_date": "2025-10-16",
+          "exit_date": "2025-10-30",
+          "entry_price": 251.4600067138672,
+          "exit_price": 281.4800109863281,
+          "return_pct": 0.11938281822532626,
+          "pnl_dollars": 15394.949688731547,
+          "holding_days": 14,
+          "exit_reason": "end_of_data",
+          "position_value": 144349.43340409079
+        }
+      ]
+    },
+    {
+      "ticker": "GOOGL",
+      "strategy_name": "Buy and Hold",
+      "strategy_type": "buy_and_hold",
+      "cumulative_return": 0.4882884984893696,
+      "annualized_return": 3.785811145753832,
+      "sharpe_ratio": 5.609749586191403,
+      "max_drawdown": -0.07125468675213385,
+      "win_rate": 1.0,
+      "calmar_ratio": 53.13069663646313,
+      "total_trades": 1,
+      "avg_trade_return": 0.4882884984893694,
+      "avg_holding_days": 90.0,
+      "profit_factor": Infinity,
+      "volatility": 0.2879361901847394,
+      "sortino_ratio": 16.06502572847832,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0,
+      "trades": [
+        {
+          "entry_date": "2025-08-01",
+          "exit_date": "2025-10-30",
+          "entry_price": 189.1300048828125,
+          "exit_price": 281.4800109863281,
+          "return_pct": 0.4882884984893694,
+          "pnl_dollars": 48828.84984893695,
+          "holding_days": 90,
+          "exit_reason": "end_of_data",
+          "position_value": 148828.84984893695
+        }
+      ]
+    }
+  ]
+}

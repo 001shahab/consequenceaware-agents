@@ -1,0 +1,121 @@
+{
+  "ticker": "KO",
+  "phase": "test",
+  "timestamp": "2026-03-07T15:04:14.275981",
+  "num_strategies": 3,
+  "results": [
+    {
+      "ticker": "KO",
+      "strategy_name": "Staples MACD Reacceleration",
+      "strategy_type": "macd_signal",
+      "cumulative_return": 0.03142979839496962,
+      "annualized_return": 0.12958448094697994,
+      "sharpe_ratio": 0.8134466082701465,
+      "max_drawdown": -0.040297707068105745,
+      "win_rate": 0.5,
+      "calmar_ratio": 3.2156787662378346,
+      "total_trades": 2,
+      "avg_trade_return": 0.0158822353526476,
+      "avg_holding_days": 24.5,
+      "profit_factor": 4.7666869940788885,
+      "volatility": 0.13928754091119175,
+      "sortino_ratio": 1.0897189363747415,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0048100948333740234,
+      "trades": [
+        {
+          "entry_date": "2025-08-06",
+          "exit_date": "2025-08-25",
+          "entry_price": 69.51000213623047,
+          "exit_price": 68.93000030517578,
+          "return_pct": -0.008344149233630582,
+          "pnl_dollars": -834.4149233630596,
+          "holding_days": 19,
+          "exit_reason": "signal",
+          "position_value": 99165.58507663694
+        },
+        {
+          "entry_date": "2025-09-30",
+          "exit_date": "2025-10-30",
+          "entry_price": 66.31999969482422,
+          "exit_price": 68.9800033569336,
+          "return_pct": 0.04010861993892578,
+          "pnl_dollars": 3977.394762860029,
+          "holding_days": 30,
+          "exit_reason": "end_of_data",
+          "position_value": 103142.97983949697
+        }
+      ]
+    },
+    {
+      "ticker": "KO",
+      "strategy_name": "Quiet Range Volatility Expansion",
+      "strategy_type": "bollinger_breakout",
+      "cumulative_return": 0.021774569311029834,
+      "annualized_return": 0.08851812435453166,
+      "sharpe_ratio": 0.6652226157230208,
+      "max_drawdown": -0.04029770706810577,
+      "win_rate": 1.0,
+      "calmar_ratio": 2.1966044917873417,
+      "total_trades": 1,
+      "avg_trade_return": 0.021774569311029834,
+      "avg_holding_days": 16.0,
+      "profit_factor": Infinity,
+      "volatility": 0.10801974223389617,
+      "sortino_ratio": 0.4994269233150842,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.006428956985473633,
+      "trades": [
+        {
+          "entry_date": "2025-10-14",
+          "exit_date": "2025-10-30",
+          "entry_price": 67.51000213623047,
+          "exit_price": 68.9800033569336,
+          "return_pct": 0.021774569311029834,
+          "pnl_dollars": 2177.4569311029773,
+          "holding_days": 16,
+          "exit_reason": "end_of_data",
+          "position_value": 102177.45693110298
+        }
+      ]
+    },
+    {
+      "ticker": "KO",
+      "strategy_name": "Buy and Hold",
+      "strategy_type": "buy_and_hold",
+      "cumulative_return": 0.0017427061504264874,
+      "annualized_return": 0.006879488974207648,
+      "sharpe_ratio": -0.00867976381726252,
+      "max_drawdown": -0.0718021460219744,
+      "win_rate": 1.0,
+      "calmar_ratio": 0.09581174596233157,
+      "total_trades": 1,
+      "avg_trade_return": 0.0017427061504264874,
+      "avg_holding_days": 90.0,
+      "profit_factor": Infinity,
+      "volatility": 0.15454902908634152,
+      "sortino_ratio": -0.01553071036061367,
+      "backtest_start_date": "2025-08-01",
+      "backtest_end_date": "2025-10-30",
+      "num_trading_days": 64,
+      "execution_time_seconds": 0.0,
+      "trades": [
+        {
+          "entry_date": "2025-08-01",
+          "exit_date": "2025-10-30",
+          "entry_price": 68.86000061035156,
+          "exit_price": 68.9800033569336,
+          "return_pct": 0.0017427061504264874,
+          "pnl_dollars": 174.27061504263838,
+          "holding_days": 90,
+          "exit_reason": "end_of_data",
+          "position_value": 100174.27061504264
+        }
+      ]
+    }
+  ]
+}
