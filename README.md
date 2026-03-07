@@ -20,46 +20,46 @@ This repository implements the complete experimental framework for studying whet
 
 ```
                     ┌──────────────────────────────┐
-                    │     Data Pipeline (Stage 1)    │
-                    │  Fetch → Validate → Clean →    │
-                    │  Split (Train/Test)             │
+                    │     Data Pipeline (Stage 1)  │
+                    │  Fetch → Validate → Clean →  │
+                    │  Split (Train/Test)          │
+                    └──────────────┬───────────────┘
+                                   │
+                    ┌──────────────▼─────────────────┐
+                    │  Strategy Generation (Stage 2) │
+                    │  LLM generates 5 strategies    │
+                    │  per stock based on market     │
+                    │  context                       │
                     └──────────────┬─────────────────┘
                                    │
                     ┌──────────────▼─────────────────┐
-                    │   Strategy Generation (Stage 2) │
-                    │  LLM generates 5 strategies     │
-                    │  per stock based on market       │
-                    │  context                         │
+                    │Consequence Assessment (Stage 3)│
+                    │  Backtest all 5 strategies on  │
+                    │  training data (4y 7m)         │
                     └──────────────┬─────────────────┘
                                    │
                     ┌──────────────▼─────────────────┐
-                    │  Consequence Assessment (Stage 3)│
-                    │  Backtest all 5 strategies on    │
-                    │  training data (4y 7m)           │
+                    │  Strategy Selection (Stage 4)  │
+                    │  Select best by Sharpe ratio   │
                     └──────────────┬─────────────────┘
                                    │
                     ┌──────────────▼─────────────────┐
-                    │  Strategy Selection (Stage 4)    │
-                    │  Select best by Sharpe ratio     │
+                    │  Out-of-Sample Test (Stage 5)  │
+                    │  Execute selected strategy on  │
+                    │  held-out test data (3 months) │
                     └──────────────┬─────────────────┘
                                    │
                     ┌──────────────▼─────────────────┐
-                    │  Out-of-Sample Test (Stage 5)    │
-                    │  Execute selected strategy on    │
-                    │  held-out test data (3 months)   │
+                    │  Baseline Comparisons (Stage 6)│
+                    │  • Random strategy selection   │
+                    │  • Buy-and-hold                │
                     └──────────────┬─────────────────┘
                                    │
                     ┌──────────────▼─────────────────┐
-                    │  Baseline Comparisons (Stage 6)  │
-                    │  • Random strategy selection     │
-                    │  • Buy-and-hold                  │
-                    └──────────────┬─────────────────┘
-                                   │
-                    ┌──────────────▼─────────────────┐
-                    │  Analysis & Visualization        │
-                    │  Statistical tests, figures,     │
-                    │  comprehensive CSV outputs        │
-                    └──────────────────────────────────┘
+                    │  Analysis & Visualization      │
+                    │  Statistical tests, figures,   │
+                    │  comprehensive CSV outputs     │
+                    └────────────────────────────────┘
 ```
 
 ### Stock Universe
@@ -273,11 +273,12 @@ If you use this code in your research, please cite:
 
 ```bibtex
 @software{anbarjafari2025consequence,
-  author = {Anbarjafari, Shahab},
-  title = {Consequence-Aware Agentic Solutions: LLM-based Trading Strategy Selection with Pre-execution Outcome Assessment},
-  year = {2025},
-  institution = {3S Holding OÜ},
-  address = {Tartu, Estonia}
+  title = {Consequence-Aware Agentic AI: A Pre-Execution Outcome Assessment Framework for Responsible Large Language Model Agents},
+  author = {Jafari, Akbar Anbar and Ozcinar, Cagri and Anbarjafari, Gholamreza},
+  journal={IEEE Transactions on Artificial Intelligence},
+  status = {Under Review},
+  pages = {1--8},
+  year = {2026}
 }
 ```
 
