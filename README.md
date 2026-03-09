@@ -7,7 +7,7 @@
 **Authors:** A. A. Jafari, C. Ozcinar, G. Anbarjafari  
 **Affiliation:** University of Tartu & 3S Holding OÜ, Tartu, Estonia  
 **Contact:** shb@3sholding.com  
-**Paper:** [arXiv:submit/7339239](https://arxiv.org/submit/7339239/view) — *Submitted to IEEE Transactions on Artificial Intelligence*  
+**Paper:** [PhilPapers](https://philpapers.org/archive/JAFCAA.pdf) — *Submitted to IEEE Transactions on Artificial Intelligence*  
 **License:** Research use
 
 ---
