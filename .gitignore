@@ -10,3 +10,10 @@ build/
 .idea/
 .vscode/
 *.log
+
+TAI_Consequence_Aware_Agentic_Solutions_annom/
+revised_paper/
+RESPONSE_TO_REVIEWERS.docx
+RESPONSE_TO_REVIEWERS.md
+paper.pdf
+results/
