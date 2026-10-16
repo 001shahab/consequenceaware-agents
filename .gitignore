@@ -17,3 +17,7 @@ RESPONSE_TO_REVIEWERS.docx
 RESPONSE_TO_REVIEWERS.md
 paper.pdf
 results/
+
+# LaTeX build tooling
+.tectonic-cache/
+tectonic
