@@ -85,6 +85,12 @@ def pick(cands: List[Dict], texts: List[str]) -> Dict[str, int]:
     }
 
 
+def active_mean(X: np.ndarray) -> np.ndarray:
+    active = np.abs(X) > 1e-12
+    n_act = active.sum(axis=1)
+    return np.where(n_act > 0, X.sum(axis=1) / np.maximum(n_act, 1), 0.0)
+
+
 def analyse_cell(cell: Dict) -> Dict:
     cands = cell["cands"]
     X = test_matrix(cands)
@@ -97,6 +103,11 @@ def analyse_cell(cell: Dict) -> Dict:
         res[name] = {m: single[i][m] for m in ("sharpe", "max_dd", "cum_return")}
     p = panel(X[:, order[:e7.TOP_M]].mean(axis=1))
     res["ca2i_plus"] = {m: p[m] for m in ("sharpe", "max_dd", "cum_return")}
+    pa = panel(active_mean(X[:, order[:e7.TOP_M]]))
+    res["ca2i_plus_active"] = {m: pa[m] for m in ("sharpe", "max_dd", "cum_return")}
+    feas75 = [i for i in order if abs(cands[i]["cvdd"]) <= 0.075]
+    p75 = panel(X[:, feas75[:e7.TOP_M]].mean(axis=1) if feas75 else np.zeros(X.shape[0]))
+    res["ca2i_plus_75"] = {m: p75[m] for m in ("sharpe", "max_dd", "cum_return")}
 
     # manipulation: relabel (a) the candidate with CAM's lowest score and
     # (b) the candidate CAM flags as riskiest (deepest cross-validated drawdown)
@@ -151,20 +162,75 @@ def main():
     import logging
     logging.disable(logging.INFO)
     data = xc.load()
+    llm_cache_path = OUT / "llm_judge_cache.json"
+    llm_cache = json.loads(llm_cache_path.read_text()) if llm_cache_path.exists() else None
     dep = {t: analyse_cell(c) for t, c in data["deployment"].items()}
-    roll = seed_average({k: analyse_cell(c) for k, c in data["rolling"].items()})
-    ladder = ["vanilla", "text_desc", "text_spec", "ca2i_base", "ca2i_plus"]
+    roll_cells = {k: analyse_cell(c) for k, c in data["rolling"].items()}
+    roll = seed_average(roll_cells)
+
+    if llm_cache is not None:
+        for t, cell in data["deployment"].items():
+            cands = cell["cands"]
+            X = test_matrix(cands)
+            single = [panel(X[:, i]) for i in range(len(cands))]
+            info = llm_cache["deployment"][t]
+            ib, iar, ias = info["pick_before"], info["pick_after_risk"], info["pick_after_score"]
+            worst_r = int(np.argmin([c["cvdd"] for c in cands]))
+            worst_s = int(np.argmin([c["lcb"] for c in cands]))
+            dep[t]["llm_judge"] = {m: single[ib][m] for m in ("sharpe", "max_dd", "cum_return")}
+            dep[t]["manip_risk"]["llm_judge_selects_decoy_before"] = float(ib == worst_r)
+            dep[t]["manip_risk"]["llm_judge_selects_decoy_after"] = float(iar == worst_r)
+            dep[t]["manip_risk"]["llm_judge_sharpe_before"] = single[ib]["sharpe"]
+            dep[t]["manip_risk"]["llm_judge_dd_before"] = single[ib]["max_dd"]
+            dep[t]["manip_risk"]["llm_judge_sharpe_after"] = single[iar]["sharpe"]
+            dep[t]["manip_risk"]["llm_judge_dd_after"] = single[iar]["max_dd"]
+            dep[t]["manip_score"]["llm_judge_selects_decoy_before"] = float(ib == worst_s)
+            dep[t]["manip_score"]["llm_judge_selects_decoy_after"] = float(ias == worst_s)
+            dep[t]["manip_score"]["llm_judge_sharpe_before"] = single[ib]["sharpe"]
+            dep[t]["manip_score"]["llm_judge_dd_before"] = single[ib]["max_dd"]
+            dep[t]["manip_score"]["llm_judge_sharpe_after"] = single[ias]["sharpe"]
+            dep[t]["manip_score"]["llm_judge_dd_after"] = single[ias]["max_dd"]
+        for (w, t) in roll:
+            cell = data["rolling"][(0, w, t)]
+            cands = cell["cands"]
+            X = test_matrix(cands)
+            single = [panel(X[:, i]) for i in range(len(cands))]
+            info = llm_cache["rolling"][f"{w}__{t}"]
+            ib, iar, ias = info["pick_before"], info["pick_after_risk"], info["pick_after_score"]
+            worst_r = int(np.argmin([c["cvdd"] for c in cands]))
+            worst_s = int(np.argmin([c["lcb"] for c in cands]))
+            roll[(w, t)]["llm_judge"] = {m: single[ib][m] for m in ("sharpe", "max_dd", "cum_return")}
+            roll[(w, t)]["manip_risk"]["llm_judge_selects_decoy_before"] = float(ib == worst_r)
+            roll[(w, t)]["manip_risk"]["llm_judge_selects_decoy_after"] = float(iar == worst_r)
+            roll[(w, t)]["manip_risk"]["llm_judge_sharpe_before"] = single[ib]["sharpe"]
+            roll[(w, t)]["manip_risk"]["llm_judge_dd_before"] = single[ib]["max_dd"]
+            roll[(w, t)]["manip_risk"]["llm_judge_sharpe_after"] = single[iar]["sharpe"]
+            roll[(w, t)]["manip_risk"]["llm_judge_dd_after"] = single[iar]["max_dd"]
+            roll[(w, t)]["manip_score"]["llm_judge_selects_decoy_before"] = float(ib == worst_s)
+            roll[(w, t)]["manip_score"]["llm_judge_selects_decoy_after"] = float(ias == worst_s)
+            roll[(w, t)]["manip_score"]["llm_judge_sharpe_before"] = single[ib]["sharpe"]
+            roll[(w, t)]["manip_score"]["llm_judge_dd_before"] = single[ib]["max_dd"]
+            roll[(w, t)]["manip_score"]["llm_judge_sharpe_after"] = single[ias]["sharpe"]
+            roll[(w, t)]["manip_score"]["llm_judge_dd_after"] = single[ias]["max_dd"]
+
+    ladder = ["vanilla", "text_desc", "text_spec", "llm_judge", "ca2i_base", "ca2i_plus", "ca2i_plus_active", "ca2i_plus_75"] if llm_cache else ["vanilla", "text_desc", "text_spec", "ca2i_base", "ca2i_plus", "ca2i_plus_active", "ca2i_plus_75"]
 
     out = {"ladder": {}, "tests": {}, "manipulation": {}}
     for setting, rows in (("deployment", dep), ("rolling", roll)):
         out["ladder"][setting] = {s: {m: float(np.mean([rows[k][s][m] for k in rows]))
                                       for m in ("sharpe", "max_dd", "cum_return")} for s in ladder}
-        for s in ("text_desc", "text_spec", "ca2i_base"):
+        for s in [x for x in ("text_desc", "text_spec", "llm_judge", "ca2i_base") if x in ladder]:
             for m in ("sharpe", "max_dd"):
                 out["tests"][f"{setting}_plus_vs_{s}_{m}"] = paired([rows[k]["ca2i_plus"][m] for k in rows],
                                                                      [rows[k][s][m] for k in rows],
                                                                      f"CA2I+ vs {s} [{m}, {setting}]")
-        for s in ("text_desc", "text_spec"):
+                out["tests"][f"{setting}_plus_active_vs_{s}_{m}"] = paired([rows[k]["ca2i_plus_active"][m] for k in rows],
+                                                                           [rows[k][s][m] for k in rows],
+                                                                           f"CA2I+active vs {s} [{m}, {setting}]")
+                out["tests"][f"{setting}_plus_75_vs_{s}_{m}"] = paired([rows[k]["ca2i_plus_75"][m] for k in rows],
+                                                                       [rows[k][s][m] for k in rows],
+                                                                       f"CA2I+75 vs {s} [{m}, {setting}]")
+        for s in [x for x in ("text_desc", "text_spec", "llm_judge") if x in ladder]:
             out["tests"][f"{setting}_{s}_vs_vanilla"] = paired([rows[k][s]["sharpe"] for k in rows],
                                                                 [rows[k]["vanilla"]["sharpe"] for k in rows],
                                                                 f"{s} vs vanilla [sharpe, {setting}]")
@@ -176,6 +242,12 @@ def main():
                 [rows[k][key]["text_desc_dd_after"] for k in rows], [rows[k][key]["text_desc_dd_before"] for k in rows],
                 f"text ranker DD after vs before relabelling ({tag} decoy, {setting})")
     out["timing"] = time_cam()
+    if llm_cache is not None:
+        out["timing"]["llm_judge_model"] = llm_cache["model"]
+        out["timing"]["llm_judge_deploy_ms_per_cell"] = float(np.mean([v["ms"] for v in llm_cache["deployment"].values()]))
+        out["timing"]["llm_judge_deploy_tokens_per_cell"] = float(np.mean([v["tokens"] for v in llm_cache["deployment"].values()]))
+        out["timing"]["llm_judge_rolling_ms_per_cell"] = float(np.mean([v["ms"] for v in llm_cache["rolling"].values()]))
+        out["timing"]["llm_judge_rolling_tokens_per_cell"] = float(np.mean([v["tokens"] for v in llm_cache["rolling"].values()]))
 
     for setting in ("deployment", "rolling"):
         print(f"\n=== Ablation ladder ({setting}) ===")

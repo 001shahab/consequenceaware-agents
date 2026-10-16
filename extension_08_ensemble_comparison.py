@@ -94,6 +94,16 @@ def mean_panel(panels: List[Dict]) -> Dict[str, float]:
     return {m: float(np.mean([p[m] for p in panels])) for m in METRICS}
 
 
+def active_ens(X_sub: np.ndarray) -> np.ndarray:
+    """Allocate capital equally across whichever selected strategies are active on day t."""
+    if X_sub.ndim == 1:
+        X_sub = X_sub[:, None]
+    if X_sub.shape[1] == 0:
+        return np.zeros(X_sub.shape[0])
+    act = (np.abs(X_sub) > 1e-12).sum(axis=1)
+    return np.where(act > 0, X_sub.sum(axis=1) / np.maximum(act, 1), 0.0)
+
+
 def order_by_score(cands, rho_max=RHO_MAX, abstain=False):
     k = len(cands)
     feas = [i for i in range(k) if rho_max is None or cands[i]["cvdd"] >= -rho_max]
@@ -109,17 +119,26 @@ def analyse_cell(cell: Dict) -> Dict:
     cands = cell["cands"]
     k = len(cands)
     X = test_matrix(cands)
+    R_tr = pd.DataFrame({i: c["train_ret"] for i, c in enumerate(cands)}).dropna(how="all").fillna(0.0).values
+    tr_mu = R_tr.mean(axis=0)
     single = [panel(X[:, i]) for i in range(k)]
     order = order_by_score(cands)
+    order_dd = list(np.argsort([c["cvdd"] for c in cands])[::-1])
+    o75 = order_by_score(cands, rho_max=0.075, abstain=True)[:TOP_M]
     res = {
         "random": mean_panel(single),
         "ca2i_base": single[int(np.argmax([c["insample_sr"] for c in cands]))],
+        "ca2i_return": single[int(np.argmax(tr_mu))],
         "ew_ensemble": panel(X.mean(axis=1)),
+        "ca2i_plus_active": panel(active_ens(X[:, order[:TOP_M]])),
+        "ca2i_plus_75_active": panel(active_ens(X[:, o75]) if o75 else np.zeros(X.shape[0])),
+        "ca2i_mindd": panel(X[:, order_dd[:TOP_M]].mean(axis=1)),
     }
     for m in M_GRID:
         if m > k:
             continue
         res[f"plus_m{m}"] = panel(X[:, order[:m]].mean(axis=1))
+        res[f"plus_act_m{m}"] = panel(active_ens(X[:, order[:m]]))
         res[f"randsub_m{m}"] = mean_panel([panel(X[:, list(s)].mean(axis=1))
                                            for s in itertools.combinations(range(k), m)])
     res["ca2i_plus"] = res[f"plus_m{TOP_M}"]
@@ -230,25 +249,27 @@ def main():
     roll_cells = {k: analyse_cell(c) for k, c in data["rolling"].items()}
     roll = seed_average(roll_cells)
 
-    main_sels = ["random", "ca2i_base", "ca2i_plus", "ew_ensemble"]
+    main_sels = ["random", "ca2i_base", "ca2i_return", "ca2i_plus", "ca2i_plus_active",
+                 "ca2i_plus_75_active", "ca2i_mindd", "ew_ensemble"]
     dep_sum = summarise(dep, main_sels)
     roll_sum = summarise(roll, main_sels)
     print_panel("=== (1a) Deployment window, GPT-5.4 candidates (K=5, n=10) ===", dep_sum)
     print_panel("=== (1b) Rolling multi-regime (K=10, n=80, 10 seeds) ===", roll_sum)
 
     tests = {}
-    for setting, rows in (("rolling", roll), ("deployment", dep)):
-        for m in METRICS:
-            tests[f"{setting}_plus_vs_ew_{m}"] = paired(col(rows, "ca2i_plus", m), col(rows, "ew_ensemble", m),
-                                                        f"CA2I+ vs EW [{m}, {setting}]")
-        for m in ("cum_return", "ann_return"):
-            tests[f"{setting}_base_vs_ew_{m}"] = paired(col(rows, "ca2i_base", m), col(rows, "ew_ensemble", m),
-                                                        f"CA2I base vs EW [{m}, {setting}]")
-    print("\n--- (1c) Paired differences ---")
-    for b in tests.values():
-        print(f"  {b['label']:42s} diff={b['mean_diff']:+.4f} t_p={b['t_p']:.3f} W_p={b['wilcoxon_p']:.3f} "
-              f"{b['wins']}+/{b['losses']}- CI=[{b['boot_ci'][0]:+.4f},{b['boot_ci'][1]:+.4f}] "
-              f"sig={b['ci_excludes_zero']}")
+    for setting, rows in (("rolling", roll), ("rolling_800", roll_cells), ("deployment", dep)):
+        for sel in ("ca2i_plus", "ca2i_plus_active", "ca2i_plus_75_active", "ca2i_mindd", "ca2i_base", "ca2i_return"):
+            for m in METRICS:
+                tests[f"{setting}_{sel}_vs_ew_{m}"] = paired(
+                    col(rows, sel, m), col(rows, "ew_ensemble", m),
+                    f"{sel} vs EW [{m}, {setting}]"
+                )
+    print("\n--- (1c) Key paired differences vs EW ---")
+    for k_t, b in tests.items():
+        if any(x in k_t for x in ("sharpe", "ann_return", "cum_return", "max_dd")):
+            print(f"  {b['label']:46s} diff={b['mean_diff']:+.4f} t_p={b['t_p']:.3g} W_p={b['wilcoxon_p']:.3g} "
+                  f"{b['wins']}+/{b['losses']}- CI=[{b['boot_ci'][0]:+.4f},{b['boot_ci'][1]:+.4f}] "
+                  f"sig={b['ci_excludes_zero']}")
 
     # (2) equal-size control
     ctrl = {}
@@ -369,29 +390,39 @@ def main():
             print(f"  {b['label']:42s} {b['mean_a']:+.4f} vs {b['mean_b']:+.4f} W_p={b['wilcoxon_p']:.3g} "
                   f"CI=[{b['boot_ci'][0]:+.4f},{b['boot_ci'][1]:+.4f}] sig={b['ci_excludes_zero']}")
 
-    out = {"deployment": dep_sum, "rolling": roll_sum, "tests": tests,
+    tail_stats = {}
+    for s in main_sels:
+        dds = np.array(col(roll, s, "max_dd"))
+        tail_stats[s] = {"worst_dd": float(dds.min()), "n_dd_below_10pct": int((dds < -0.10).sum())}
+
+    out = {"deployment": dep_sum, "rolling": roll_sum, "rolling_tail": tail_stats, "tests": tests,
            "gated_equal_weight": gated_out, "exposure_matched_control": delever,
            "risk_budget_vs_ew": budget_vs_ew,
            "equal_size_control": ctrl, "equal_size_control_deployment": dep_ctrl,
            "risk_forecast_skill": skill, "risk_budget_sweep": sweep,
            "sweep_tight_vs_unconstrained": sweep_test, "sweep_tight_vs_ew": ew_vs_tight,
            "ablation_rolling": {f"m{m}": {"top": float(np.mean(col(roll, f'plus_m{m}', 'sharpe'))),
+                                          "top_active": float(np.mean(col(roll, f'plus_act_m{m}', 'sharpe'))),
                                           "random": float(np.mean(col(roll, f'randsub_m{m}', 'sharpe')))}
                                 for m in M_GRID}}
     with open(OUT / "ensemble_comparison.json", "w") as f:
         json.dump(out, f, indent=2)
 
     # ---- figure ----------------------------------------------------------
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11, 4.0))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11.2, 4.1))
     x = np.arange(len(M_GRID) + 1)
     top = [out["ablation_rolling"][f"m{m}"]["top"] for m in M_GRID] + [roll_sum["ew_ensemble"]["sharpe"]]
+    top_act = [out["ablation_rolling"][f"m{m}"]["top_active"] for m in M_GRID] + [roll_sum["ew_ensemble"]["sharpe"]]
     rnd = [out["ablation_rolling"][f"m{m}"]["random"] for m in M_GRID] + [roll_sum["ew_ensemble"]["sharpe"]]
-    ax1.bar(x - 0.2, rnd, 0.4, color=config.COLOR_RANDOM_BASELINE, label="Random $m$-subset (expected)")
-    ax1.bar(x + 0.2, top, 0.4, color=config.COLOR_CONSEQUENCE_AWARE, label="Consequence-ranked top-$m$")
+    w_b = 0.26
+    ax1.bar(x - w_b, rnd, w_b, color=config.COLOR_RANDOM_BASELINE, label="Random $m$-subset (expected)")
+    ax1.bar(x, top, w_b, color=config.COLOR_CONSEQUENCE_AWARE, label="Consequence-ranked top-$m$ (static $1/m$)")
+    ax1.bar(x + w_b, top_act, w_b, color="#0D47A1", label="Consequence-ranked top-$m$ (active-capital)")
     ax1.set_xticks(x); ax1.set_xticklabels([f"m={m}" for m in M_GRID] + ["m=K=10\n(equal-weight)"], fontsize=8)
     ax1.set_ylabel("Mean test Sharpe (rolling, $n$=80)")
-    ax1.set_title("(a) Value of the consequence ranking at fixed ensemble size")
-    ax1.axhline(0, color="k", lw=0.5); ax1.legend(fontsize=8, loc="upper left")
+    ax1.set_title("(a) Consequence ranking & active-capital allocation vs. random $m$-subsets", fontsize=9.5)
+    ax1.axhline(roll_sum["ew_ensemble"]["sharpe"], color="#757575", ls="--", lw=0.9)
+    ax1.axhline(0, color="k", lw=0.5); ax1.legend(fontsize=7.5, loc="upper left")
 
     rhos = [r for r in map(str, RHO_GRID)]
     lab = [f"{float(r)*100:g}%" if r != "None" else "none" for r in rhos]
